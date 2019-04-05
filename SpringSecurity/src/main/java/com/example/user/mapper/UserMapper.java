@@ -12,4 +12,6 @@ public interface UserMapper {
 	public User getUser(String username);
 	
 	public List<String> getAuthority(String username);
+	
+	public int createUser(User user);
 }

@@ -11,5 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
 	<select id="getAuthority" parameterType="String" resultType="String">
 		SELECT authority_name FROM authority WHERE username = #{username}
-	</select>    
+	</select>  
+	
+	<insert id="createUser" parameterType="com.example.user.domain.User">
+		INSERT INTO user VALUES (#{username}, #{password}, #{name}, #{isAccountNonExpired}, #{isAccountNonLocked}, #{isCredentialsNonExpired}, #{isEnabled})
+	</insert>  
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.user.domain.User;
@@ -36,6 +37,14 @@ public class UserService implements UserDetailsService {
 		}
 		
 		return authorities;
+	}
+	
+	public void createUser(User user) {
+		String rawPassword = user.getPassword();
+		String encPassword = new BCryptPasswordEncoder().encode(rawPassword);
+		user.setPassword(encPassword);
+		userMapper.createUser(user);
+
 	}
 
 }

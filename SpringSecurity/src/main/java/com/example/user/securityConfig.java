@@ -31,7 +31,7 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 		http
 		    .csrf().disable()
 		    .authorizeRequests()
-		    .antMatchers("/", "/login").permitAll() //인증 없이 허용되는 경로
+		    .antMatchers("/", "/login", "/join").permitAll() //인증 없이 허용되는 경로
 		 	.antMatchers("/**").authenticated() //인증 받아야 접근할 수 있는 경로
 		 	  
 		 	.and()
@@ -52,10 +52,10 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     	//비밀번호 암호화 없이 로그인할때
-		auth.userDetailsService(userService).passwordEncoder(this.noOpPasswordEncoder());
+//		auth.userDetailsService(userService).passwordEncoder(this.noOpPasswordEncoder());
 		
 		//비밀번호 암호화 해서 로그인할때
-//		auth.userDetailsService(userService).passwordEncoder(this.passwordEncoder());
+		auth.userDetailsService(userService).passwordEncoder(this.passwordEncoder());
     }	
     
     public PasswordEncoder noOpPasswordEncoder(){
