@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,12 +20,14 @@ import com.example.user.mapper.UserMapper;
 
 @Service
 public class UserService implements UserDetailsService {
+	private static final Log LOG = LogFactory.getLog( UserService.class );
 
 	@Autowired
 	private UserMapper userMapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		LOG.debug("UserService 로그다");;
 		User user = userMapper.getUser(username);
 		user.setAuthorities(getAuthorities(username));
 		return user;

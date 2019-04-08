@@ -52,10 +52,10 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     	//비밀번호 암호화 없이 로그인할때
-//		auth.userDetailsService(userService).passwordEncoder(this.noOpPasswordEncoder());
+		auth.userDetailsService(userService).passwordEncoder(this.noOpPasswordEncoder());
 		
 		//비밀번호 암호화 해서 로그인할때
-		auth.userDetailsService(userService).passwordEncoder(this.passwordEncoder());
+//		auth.userDetailsService(userService).passwordEncoder(this.passwordEncoder());
     }	
     
     public PasswordEncoder noOpPasswordEncoder(){
