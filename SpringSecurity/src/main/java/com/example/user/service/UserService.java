@@ -25,6 +25,10 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserMapper userMapper;
 	
+	public List<User> selectUser(){
+		return userMapper.selectUser();
+	}
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		LOG.debug("UserService 로그다");;

@@ -5,6 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="com.example.user.mapper.UserMapper">
  
+    <select id="selectUser" resultType="com.example.user.domain.User">
+        select * from user
+    </select>
+ 
     <select id="getUser" parameterType="String" resultType="com.example.user.domain.User">
         select * from user where username = #{username}
     </select>

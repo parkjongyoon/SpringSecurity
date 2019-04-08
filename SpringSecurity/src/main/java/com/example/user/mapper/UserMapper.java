@@ -9,6 +9,8 @@ import com.example.user.domain.User;
 @Mapper
 public interface UserMapper {
 	
+	public List<User> selectUser();
+	
 	public User getUser(String username);
 	
 	public List<String> getAuthority(String username);

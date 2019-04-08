@@ -16,8 +16,8 @@
 </c:if>
 로그인 페이지
 <form:form action="/login" method="post">
-    <input type="text" name="username">
-    <input type="password" name="password">
+    <input type="text" name="username" value="abc"> 
+    <input type="password" name="password" value="abcd">
     <input type="submit" value="로그인">
 </form:form>
 </body>
