@@ -31,7 +31,7 @@ public class UserService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		LOG.debug("UserService 로그다");;
+		LOG.debug("UserService 로그다");
 		User user = userMapper.getUser(username);
 		user.setAuthorities(getAuthorities(username));
 		return user;
